@@ -3,7 +3,7 @@
 > ### Clojure, HttpKit and Ring codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
 
 
-### [Demo]()&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
+### [RealWorld](https://github.com/gothinkster/realworld)
 
 
 This codebase was created to demonstrate a fully fledged fullstack application built with **Clojure, HttpKit and Ring** including CRUD operations, authentication, routing, pagination, and more.
