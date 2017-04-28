@@ -10,8 +10,12 @@
 .classpath
 *.launch
 .settings/
-
+.vscode/
 
 #System Files
 .DS_Store
 Thumbs.db
+
+#Clojure
+pom.xml
+target/**
