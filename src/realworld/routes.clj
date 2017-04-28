@@ -14,7 +14,7 @@
     (c/POST "/login" req (users/login req))
     (c/POST "/" req (users/register req))))
 
-(def app (-> routes
+(defn app [] (-> routes
              wrap-params
              wrap-keyword-params
              wrap-json-response

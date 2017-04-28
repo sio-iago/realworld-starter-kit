@@ -12,7 +12,7 @@
   (if (contains? env :port) (read-string (env :port)) port))
 
 (defn start-server []
-  (reset! server (run-server #'api/app {:port (get-port 5000)})))
+  (reset! server (run-server (api/app) {:port (get-port 5000)})))
 
 (defn -main [& args]
     (start-server)
