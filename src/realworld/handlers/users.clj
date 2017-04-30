@@ -1,18 +1,12 @@
 (ns realworld.handlers.users
-    )
+  (:require [realworld.repositories.user-repo :as users]))
+    
 
 (defn login [req]
     (let [user (-> req :body :user)
           email (user :email)
           password (user :password)]
-     {:body {
-             :user {
-                    :id 1
-                    :email email
-                    :username "test"
-                    :bio "lorem ipsum"
-                    :image nil
-                    :token "123456"}}}))
+     {:body {:user (users/find-one email password)}}))
 
 (defn register [req]
     (let [user (-> req :body :user)
@@ -20,10 +14,6 @@
           email (user :email)
           password (user :password)]
      {:body {
-             :user {
-                    :id 1
-                    :email email
-                    :username username
-                    :bio ""
-                    :image nil
-                    :token "123456"}}}))
+             :user (users/persist-user :username username
+                                       :email email
+                                       :password password)}}))

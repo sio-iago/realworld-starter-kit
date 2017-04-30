@@ -15,7 +15,7 @@
     (c/POST "/" req (users/register req))))
 
 (defn app [] (-> routes
-             wrap-params
-             wrap-keyword-params
-             wrap-json-response
-             (wrap-json-body {:keywords? true})))
+              wrap-params
+              wrap-keyword-params
+              wrap-json-response
+              (wrap-json-body {:keywords? true})))
