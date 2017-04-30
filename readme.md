@@ -23,6 +23,6 @@ Just a few steps to have you up and running:
 
 + Download and install [leiningen](https://github.com/technomancy/leiningen)
 + Clone this repo
-+ Open a termninal, navigate to your project folder and type "lein run"
++ Open a terminal, navigate to your project folder and type "lein run"
 
 And you're up!
