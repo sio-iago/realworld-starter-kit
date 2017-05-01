@@ -18,6 +18,9 @@
                  
                  ; JWT Auth
                  [clj-jwt "0.1.1"]
+
+                 ; Password encryption
+                 [crypto-password "0.2.0"]
                  
                  ; Pretty logging
                  [org.clojure/tools.logging "0.2.6"]
@@ -25,6 +28,7 @@
                  
                  ; SQLite Dependencies
                  [org.clojure/java.jdbc "0.3.7"]
+                 [java-jdbc/dsl "0.1.3"]
                  [org.xerial/sqlite-jdbc "3.7.2"]]
 
   :profiles {:dev {:env {:port "9000"
