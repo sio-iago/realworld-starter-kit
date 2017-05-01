@@ -13,4 +13,5 @@
                  [environ "1.1.0"]
                  [clj-jwt "0.1.1"]
                  [org.clojure/tools.logging "0.2.6"]
-                 [ch.qos.logback/logback-classic "1.0.1"]])
+                 [ch.qos.logback/logback-classic "1.0.1"]
+                 [org.xerial/sqlite-jdbc "3.7.2"]])

@@ -4,7 +4,7 @@
       [ring.middleware.keyword-params :refer [wrap-keyword-params]]
       [ring.middleware.params :refer [wrap-params]]
       [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
-      [realworld.handlers.users :as users]))
+      [realworld.handler.users :as users]))
 
 ;; Mapping definitions
 (c/defroutes
