@@ -1,6 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# dependencies
+# Dependencies
 /node_modules
 /bower_components
 
@@ -12,12 +12,15 @@
 .settings/
 .vscode/
 
-#System Files
+# System Files
 .DS_Store
 Thumbs.db
 
-#Clojure
+# Clojure
 pom.xml
 target/**
 .lein*
 **repl**
+
+# SQLite
+*.db
