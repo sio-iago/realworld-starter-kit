@@ -17,3 +17,10 @@
 (defn current-user [req]
   (let [token (util/get-auth-token req)]
    {:body {:user (usr-repo/find-by-token token)}}))
+   
+(defn update-user [req]
+  (let [token (util/get-auth-token req)
+        req-user (-> req :body :user)
+        did-update (usr-repo/update-by-token token req-user)
+        user (if did-update (usr-repo/find-by-token token))]
+    {:body {:user user}}))

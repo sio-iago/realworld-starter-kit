@@ -7,6 +7,11 @@
             [clj-time.core :refer [now plus days]]
             [environ.core :refer [env]]))
 
+
+; Header of declares
+(declare find-by-token)
+
+; Functions
 (defn- get-secret []
   "Retrieves the secret to generate the token"
   (if (contains? env :secret) (env :secret) "some-default-secret-dont-use-it"))
@@ -22,6 +27,22 @@
                :exp (plus (now) (days 7))
                :iat (now)}]
     (-> claim jwt (sign :HS256 (get-secret)) to-str)))
+
+(defn- prepare-user [result-map key val]
+  "Prepares the user data before updates"
+  (cond
+    (= key :password) (assoc result-map :password (encrypt-password val))
+    (= key :token) result-map
+    :else (assoc result-map key val)))
+
+(defn update-token [email]
+  "Updates an user's token."
+  (let [new-tok (generate-token email)]
+    (if
+      (not 
+        (nil? (update! (get-db) :users {:token new-tok} ["email=?" email])))
+      new-tok
+      nil)))
 
 (defn insert-user [user]
   "Inserts a new user to the database."
@@ -41,14 +62,11 @@
               :token token
               :password password})))
 
-(defn update-token [email]
-  "Updates an user's token."
-  (let [new-tok (generate-token email)]
-    (if
-      (not 
-        (nil? (update! (get-db) :users {:token new-tok} ["email=?" email])))
-      new-tok
-      nil)))
+(defn update-by-token [token user-map]
+  "Updates an user given it's token."
+  (let [prepared-user (reduce-kv prepare-user {} user-map)
+        db (get-db)]
+    (update! db :users prepared-user ["token = ?" token])))
 
 (defn find-by-email-password [email password]
   "Finds an user by it's email and password."

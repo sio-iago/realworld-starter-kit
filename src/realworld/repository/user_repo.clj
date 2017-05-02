@@ -17,3 +17,7 @@
   "Persists a new user."
   (usr-db/insert-user user-map)
   (find-one (user-map :email) (user-map :password)))
+
+(defn update-by-token [token user-map]
+  "Updates an user by it's given token."
+  (usr-db/update-by-token token user-map))
