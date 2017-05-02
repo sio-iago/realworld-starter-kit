@@ -5,6 +5,10 @@
   "Find an user by it's email and password."
   (usr-db/find-by-email-password email password))
 
+(defn find-by-token [token]
+  "Finds an user by it's token."
+  (usr-db/find-by-token token))
+
 (defn update-token [email]
   "Updates the user token."
   (usr-db/update-token email))

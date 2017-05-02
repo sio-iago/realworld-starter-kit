@@ -12,7 +12,8 @@
   (c/GET "/resource-status" [] "OK")
   (c/context "/users" []
     (c/POST "/login" req (users/login req))
-    (c/POST "/" req (users/register req))))
+    (c/POST "/" req (users/register req)))
+  (c/GET "/user" req (users/current-user req)))
 
 (defn app [] (-> routes
               wrap-params

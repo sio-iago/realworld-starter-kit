@@ -56,3 +56,10 @@
                   (sql/select * :users (sql/where {:email email})))
         user (first results)]
     (if (crypto/check password (user :password)) user nil)))
+
+(defn find-by-token [token]
+  "Finds an user by it's token."
+  (let [results (query (get-db)
+                  (sql/select * :users (sql/where {:token token})))
+        user (first results)]
+    user))
