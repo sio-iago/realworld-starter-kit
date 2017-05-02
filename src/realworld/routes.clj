@@ -28,11 +28,11 @@
 (defn wrap-middlewares [routes]
   "Wraps all the common middlewares to the routes."
   (-> routes
-      wrap-access-log
       wrap-fail-safe
       wrap-params
       wrap-keyword-params
       wrap-json-response
+      wrap-access-log
       (wrap-json-body {:keywords? true})))
 
 ; Public mapping definitions
